@@ -24,7 +24,6 @@ public class EmployeeDao {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Employee> list() {
-		List<Employee> result = sessionFactory.getCurrentSession().createQuery("from Employee").getResultList();
-		return result;
+		return (List<Employee>) sessionFactory.getCurrentSession().createQuery("from Employee").getResultList();
 	}
 }

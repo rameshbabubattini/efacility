@@ -20,7 +20,7 @@ public class Employee {
 	private String address2;
 	private String building;
 	private String password;
-	private Set<UserRole> userRole = new HashSet<UserRole>();
+	private Set<UserRole> userRole = new HashSet<>();
 	
 	@Id
 	@Column

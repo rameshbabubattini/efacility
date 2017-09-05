@@ -31,7 +31,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@org.springframework.transaction.annotation.Transactional(readOnly=true)
 	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String userName) {
 		Employee employee = userDao.findByUserName(userName);
 		List<GrantedAuthority> authorities = buildUserAuthority(employee.getUserRole());
 		return buildUserForAuthentication(employee, authorities);
@@ -42,7 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	}
 	
 	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
-		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
+		Set<GrantedAuthority> setAuths = new HashSet<>();
 		
 		//Build User's Authorities
 		for (UserRole userRole : userRoles) {
